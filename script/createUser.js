@@ -38,7 +38,7 @@ async function createUser(cpf, user, nome, senha){
                 console.log(response.json())
                 window.location.replace('login.html')
             }
-            // window.location.replace('error.html');
+            window.location.replace('error.html');
             return Promise.reject(response)
         })
     } catch (error) {

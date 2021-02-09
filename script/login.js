@@ -1,14 +1,23 @@
 
-const BASE_URL = "accenture-java-desafio.herokuapp.com/";
+const BASE_URL = "https://accenture-java-desafio.herokuapp.com/";
 const CONTENT = "application/json";
 const MODE = "cors";
 const LOCALHOST = "localhost:5500/"
 
+document.getElementById('submitLogin').addEventListener('submit', e => {
+    e.preventDefault();
+    const login = document.getElementById('login__username').value;
+    const passwd = document.getElementById('login__password').value;
+    console.log(login, passwd)
+    loginForm(login, passwd);
+})
 
 
-async function login(user, senha){
+
+async function loginForm(user, senha){
     try {
-        const response = await fetch(`${BASE_URL}altera-senha`, {
+        await fetch(`${BASE_URL}login`, {
+            mode: MODE,
             method: "POST",
             body: JSON.stringify({
                 senha: senha,
@@ -23,9 +32,8 @@ async function login(user, senha){
                 location.replace('dashboard.html');
                 const resData = res.json()
                 console.log(resData);
-                
             }
-            location.replace('error.html')
+            // location.replace('error.html')
             return Promise.reject(res)
         })
     } catch (error) {
@@ -49,7 +57,7 @@ async function alterarSenha(user, senha){
         .then( res => {
             if (res.ok){
                 console.log(res.json());
-                location.replace('login.html');
+                location.replace('altera-senha.html');
             }
             location.replace('error.html')
             return Promise.reject(res)
