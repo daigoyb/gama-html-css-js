@@ -2,9 +2,21 @@
 const BASE_URL = "accenture-java-desafio.herokuapp.com/";
 const CONTENT = "application/json";
 const MODE = "cors";
-const LOCALHOST = "localhost:5500/"
 
+document.getElementById('submitFormCadastro').addEventListener('submit', submitCadastroForm)
 
+function submitCadastroForm(event){
+    event.preventDefault();
+    const cpf = document.getElementById('cpf');
+    const name = document.getElementById('name');
+    const user = document.getElementById('user');
+    const senha = document.getElementById('senha');
+    const senhaDeNovo = document.getElementById('senhaDeNovo');
+    if (senha === senhaDeNovo){
+        await createUser(cpf, user, name, senha);
+    }
+    
+}
 
 async function createUser(cpf, user, nome, senha){
     try{
@@ -20,12 +32,12 @@ async function createUser(cpf, user, nome, senha){
                 'Content-type': CONTENT
             }
         })
-        .then( res => {
-            if (res.ok){
+        .then( response => {
+            if (response.ok){
                 console.log(res.json())
-                return createCardLoginRealizado();
+                window.location.replace('login.html')
             }
-            location.replace(`${LOCALHOST}error.html`)
+            window.location.replace('error.html');
             return Promise.reject(res)
         })
     } catch (error) {
@@ -33,7 +45,13 @@ async function createUser(cpf, user, nome, senha){
     }
 }
 
+function redirectToLogin(){
+    window.location.replace('login.html')
+}
+
 
 function createCardLoginRealizado(){
-
+    let wrapper = document.createElement('div');
+    wrapper.className('wrapper');
+    
 }
