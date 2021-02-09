@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio Html CSS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+</head>
+<body>
+    <header class="nav-site">
+        <nav class="nav-content">
+            <div class="logo">
+                <a href="index.html"><img class="logo-img" src="img/logo.png" alt="logo banco"></a>
+            </div>
+            <div class="nav-login">
+                <a href="login.html"><button 
+                    class="btn-nav-login"
+                    >Login</button>
+                </a>
+            </div>
+
+        </nav>
+    </header>
+    <!-- main div -->
+    <div class="landing-page">
+
+        <div class="form-div">
+            <h3 class="texto-medio texto-form">Peça seu cartão e conta do Gama Bank</h3>
+            <form>
+                <div class="group">
+                    <input type="text" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label for="">Nome</label>
+                </div>
+                <div class="group">
+                    <input type="text"  
+                        pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" 
+                        title="Digite um CPF no formato: xxx.xxx.xxx-xx"
+                        required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span> 
+                    <label for="">CPF</label>   
+                </div>
+                <div class="group">
+                    <input type="email" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>  
+                    <label for="">Email</label> 
+                </div>
+                <div class="group">
+                    <input type="password" name="" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>   
+                    <label for="">Senha</label>
+                </div>
+                <div class="group">
+                    <input type="password" name="" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>  
+                    <label for="">Senha novamente</label> 
+                </div>
+                <button class="btn-landing-page" type="button">Cadastrar</button>
+            </form>
+        </div>
+
+        <div class="btn-div">
+            <div class="default-container logo-div">
+                <img src="img/logo.png" class="logo-capa" alt="">
+            </div>
+            <button class="btn-landing-page" type="button">Entrar</button>
+            <p class="texto-pequeno"><a class="text-login" href="login.html">Já possui conta?</a></p>
+        </div>
+    </div>
+    <div class="parallax-container bg-color-light default-container">
+        <h2 class="texto-grande">Aqui é <br/><span data-shadow="0.0%" class="percentage-text"> 0.0% </span> <br /> de anuidade</h2>
+    </div>
+    <div class="parallax-container bg-img-park">
+        <div class="default-container">
+            <p class="text-parallax-park texto-grande">Aqui você faz o seu caminho</p>
+        </div>
+    </div>
+    <footer class="footer-content">
+        2021
+    </footer>
+</body>
+</html>
