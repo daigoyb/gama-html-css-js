@@ -1,26 +1,27 @@
 
-const BASE_URL = "accenture-java-desafio.herokuapp.com/";
+const BASE_URL = "https://accenture-java-desafio.herokuapp.com/";
 const CONTENT = "application/json";
 const MODE = "cors";
 
-document.getElementById('submitFormCadastro').addEventListener('submit', submitCadastroForm)
-
-function submitCadastroForm(event){
-    event.preventDefault();
-    const cpf = document.getElementById('cpf');
-    const name = document.getElementById('name');
-    const user = document.getElementById('user');
-    const senha = document.getElementById('senha');
-    const senhaDeNovo = document.getElementById('senhaDeNovo');
+document.getElementById('submitFormCadastro').addEventListener('submit', e => {
+    e.preventDefault();
+    const cpf = document.getElementById('cpf').value;
+    const name = document.getElementById('name').value;
+    const user = document.getElementById('user').value;
+    const senha = document.getElementById('senha').value;
+    const senhaDeNovo = document.getElementById('senhaDeNovo').value;
     if (senha === senhaDeNovo){
-        await createUser(cpf, user, name, senha);
+        createUser(cpf, user, name, senha);
     }
-    
-}
+    else {
+        console.log('senhas erradas');
+    }
+})
 
 async function createUser(cpf, user, nome, senha){
     try{
-        const res = await fetch(`${BASE_URL}usuarios`, {
+        await fetch(`${BASE_URL}usuarios`, {
+            mode: MODE,
             method: "POST",
             body: JSON.stringify({
                 cpf: cpf,
@@ -34,11 +35,11 @@ async function createUser(cpf, user, nome, senha){
         })
         .then( response => {
             if (response.ok){
-                console.log(res.json())
+                console.log(response.json())
                 window.location.replace('login.html')
             }
-            window.location.replace('error.html');
-            return Promise.reject(res)
+            // window.location.replace('error.html');
+            return Promise.reject(response)
         })
     } catch (error) {
         console.log(error)
@@ -47,11 +48,4 @@ async function createUser(cpf, user, nome, senha){
 
 function redirectToLogin(){
     window.location.replace('login.html')
-}
-
-
-function createCardLoginRealizado(){
-    let wrapper = document.createElement('div');
-    wrapper.className('wrapper');
-    
 }
